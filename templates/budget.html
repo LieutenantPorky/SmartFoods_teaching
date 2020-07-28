@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CHange your budget</title>
+  </head>
+  <body>
+
+    <h1>Hello there, {{user}}, your current budget it {{budget}}</h1>
+
+    <form class="" action="/budget" method="post">
+      <input type="number" name="new_budget" value="{{budget}}">
+      <button type="submit" name="button">Submit</button>
+    </form>
+
+    <button type="button" name="button"><a href="/">Go Back!</a></button>
+
+  </body>
+</html>
