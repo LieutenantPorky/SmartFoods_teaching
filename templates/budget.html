@@ -1,12 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+
+    $(function() {
+
+      $("form").submit(
+        function( event ) {
+          console.log( $(this).serializeArray());
+          event.preventDefault();
+
+          $.post("/budget", $(this).serializeArray(), function(newData) {
+            alert("Your data has been posted!");
+            console.log(newData);
+            $("#budget").text(newData.new_budget);
+          });
+        }
+      )
+    }
+
+    )
+
+    </script>
+
     <meta charset="utf-8">
     <title>CHange your budget</title>
   </head>
   <body>
 
-    <h1>Hello there, {{user}}, your current budget it {{budget}}</h1>
+    <h1>Hello there, {{user}}, your current budget is</h1>
+    <h1 id="budget">{{budget}}</h1>
 
     <form class="" action="/budget" method="post">
       <input type="number" name="new_budget" value="{{budget}}">

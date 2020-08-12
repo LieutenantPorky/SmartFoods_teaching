@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request # Flask is a python module, so it needs to be imported at the start
+from flask import Flask, render_template, request, jsonify # Flask is a python module, so it needs to be imported at the start
 
 # Quickly setup the environment - we're telling Flask that it should run as a server, as well as giving it the location
 # of static files (files that need to be fetched separately), and telling it to enable debugging
@@ -36,6 +36,7 @@ def changeBudget():
         newBudget = request.form.get("new_budget")
         print(newBudget)
         currentBudget = newBudget
+        return jsonify({"new_budget":newBudget})
 
     return render_template("budget.html", user= username, budget=currentBudget)
 
